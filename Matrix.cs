@@ -15,7 +15,7 @@ namespace YAP_PSU_LAB3_TASK7
             {
                 do
                 {
-                    temp = rnd.Next(0,9);
+                    temp = rnd.Next(0,10);
                 } while (temp % 2 == 0 || temp == 0);
                 value += (char)(temp + 48);
             }
@@ -87,12 +87,41 @@ namespace YAP_PSU_LAB3_TASK7
                     int sum = substr_sum(j,j + 2, i) + substr_sum(j, j + 2, i + 1) + substr_sum(j, j + 2, i + 2);
                     if (sum > max_sum)
                     {
+
                         max_sum = sum;
                     }
                 }
             }
 
             return max_sum;
+        }
+
+        public Matrix GetMaxTrippleSubMatrix()
+        {
+            Matrix SubMatrix = new Matrix(3, 3);
+
+            int max_sum = -9999999;
+
+            for (int i = 0; i < MatrixArray.GetUpperBound(0) - 1; ++i)
+            {
+                for (int j = 0; j < MatrixArray.GetUpperBound(1) - 1; ++j)
+                {
+                    int sum = substr_sum(j, j + 2, i) + substr_sum(j, j + 2, i + 1) + substr_sum(j, j + 2, i + 2);
+                    if (sum > max_sum)
+                    {
+                        for (int k = 0; k < 3; ++k)
+                        {
+                            for (int l = 0; l < 3; ++l)
+                            {
+                                SubMatrix.MatrixArray[k, l] = MatrixArray[i + l, j + k];
+                            }
+                        } 
+                        max_sum = sum;
+                    }
+                }
+            }
+
+            return SubMatrix;
         }
 
         public void FillMatrix() //заполняет матрицу по столбцам (слева направо) и по строкам (сверху вниз)
