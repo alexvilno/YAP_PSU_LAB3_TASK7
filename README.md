@@ -157,7 +157,7 @@ Console.WriteLine(M2.ToString());
 В матрице M1 с помощью метода ```public int max_sum_triple_matrix();``` найдем максимальную(наибольшая сумма элементов) подматрицу размера 3 х 3: 
 
 ```c#
-
+Console.WriteLine("M1 наибольшая подматрица (сумма эл-тов) = " + M1.max_sum_triple_matrix());
 ```
 *Вывод:*
 
